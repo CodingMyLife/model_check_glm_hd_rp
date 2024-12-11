@@ -9,8 +9,17 @@ This repository contains:
 
 Installation in R from this github repository:
 
-'''
+`
 install.packages(devtools)
 library(devtools)
-install_github("jankova/GRPtests/GRPtests_Rpackage_update_Jan_2021/GRPtests")
-'''
+install_github("CodingMyLife/model_check_glm_hd_rp/PLStests")
+`
+
+## Simulation of section 5.1 
+
+### model_check_for_glm_study_01.R
+
+- step 1: create fold tmp and result in the fold model_check_glm_hd_rp
+- step 2: source("./model_check_glm_hd_rp/model_check_for_glm_study_01.R")
+
+the outputs of this code will save in the the fold tmp and result. as the name indicate, logging file lay in tmp and the p value of our statistic lay in fold result. The size and power record in model_check_for_glm_study_01_agg_xxx.csv. in the table, you will find size or power of different combinations of n,p,rho,and a of different models .
