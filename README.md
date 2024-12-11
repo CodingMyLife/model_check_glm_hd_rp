@@ -9,12 +9,15 @@ This repository contains:
 
 Installation in R from this github repository:
 
-`
+```
 install.packages(devtools)
 library(devtools)
 install_github("CodingMyLife/model_check_glm_hd_rp/PLStests")
-`
-
+```
+or download the project, using 
+```
+devtools::install_local("your_dir/model_check_glm_hd_rp/PLStests")
+```
 ## Simulation of section 5.1 
 
 ### model_check_for_glm_study_01.R
