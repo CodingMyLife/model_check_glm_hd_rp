@@ -1,0 +1,16 @@
+#' Example Dataset: sonar_mines
+#'
+#' we evaluate the proposed tests through an analysis of a classification task aimed at
+#' distinguishing between sonar signals bounced off a metal cylinder and those bounced
+#' off a roughly cylindrical rock. The dataset is available at
+#' \url{https://archive.ics.uci.edu/dataset/151/connectionist+bench+sonar+mines+vs+rocks}.
+#'
+#' @format A data frame with 208 rows and 61 variables:
+#' \describe{
+#'   \item{y}{character: An classification for each observation.}
+#'   \item{v1-v60}{Numeric. Each pattern is a set of 60 numbers in the range 0.0 to 1.0.
+#'   Each number represents the energy within a particular frequency band,
+#'   integrated over a certain period of time..}
+#' }
+#' @source from \url{https://archive.ics.uci.edu/dataset/151/connectionist+bench+sonar+mines+vs+rocks}
+"sonar_mines"
