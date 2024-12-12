@@ -21,8 +21,8 @@ devtools::install_local("your_dir/model_check_glm_hd_rp/PLStests")
 ## Simulation of section 5.1 
 
 ### model_check_for_glm_study_01.R
-- step 0: download this project, and unzip to .../yourhomedir/model_check_glm_hd_rp
-- step 1: change your r workdir to .../yourhomedir/model_check_glm_hd_rp
+- step 0: download this project, and unzip to .../yourhomedir/model_check_glm_hd_rp-main
+- step 1: change your r workdir to .../yourhomedir/model_check_glm_hd_rp-main
 - step 2: create  two folds "tmp" and "result" in the fold model_check_glm_hd_rp
 - step 3: source("./model_check_glm_hd_rp/model_check_for_glm_study_01.R") [run in rstadio]
 
