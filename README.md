@@ -28,6 +28,8 @@ devtools::install_local("your_dir/model_check_glm_hd_rp/PLStests")
 
 the outputs of this code will save in the the fold tmp and result. as the name indicate, logging file lay in tmp and the p value of our statistic lay in fold result. The size and power record in model_check_for_glm_study_01_agg_xxx.csv. in the table, you will find size or power of different combinations of n,p,rho,and a of different models .
 
+It will take 10 minums to run this code. we comment out the GRP and RP test. If you want it, you should add it easily following our framwork.
+
 ### model_check_for_glm_study_02.R
 
 same as before. more detail can be found in the comments in the file.
