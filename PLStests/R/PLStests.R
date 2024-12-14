@@ -30,7 +30,7 @@ PLStest_GLM <- function(y, x, b0=2, np=10) {
         pred.lasso = predict(mod_cv0, newx = x,type="response",s=mod_cv0$lambda.min)
         pred.lasso = matrix(unname(pred.lasso),ncol = 1)
         #residual
-        U <- y
+        U <- y - pred.lasso
         #residual matrix ，ui*uj
         errormat <- U %*% t(U)
         #bandwidth
