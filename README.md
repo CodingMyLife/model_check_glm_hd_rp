@@ -23,9 +23,8 @@ devtools::install_local("your_dir/model_check_glm_hd_rp/PLStests")
 ### model_check_for_glm_study_01.R
 - step 0: download this project, and unzip to .../yourhomedir/model_check_glm_hd_rp, where the model_check_for_glm_study_01.R and other files included in this directory.
 - step 1: change your rstadio working directory to .../yourhomedir/model_check_glm_hd_rp
-- step 2: create  two folds "tmp" and "result" in the fold model_check_glm_hd_rp
-- step 3: source("./model_check_glm_hd_rp/model_check_for_glm_study_01.R") [or run in rstadio]
-- step 4: the size or power  results be writen in fold "result", while runtime loggings in "tmp"
+- step 2: source("./model_check_glm_hd_rp/model_check_for_glm_study_01.R") [or run in rstadio]
+- step 3: the size or power  results be writen in fold "result", while runtime loggings in "tmp"
 
 The outputs of this code will be saved in the the folds tmp and result. As the name indicate, logging files lay in tmp and the p value of our statistics lay in result fold. The size and power record in model_check_for_glm_study_01_xxx_agg_xxx.csv. Tn this table, you will find size or power of different combinations of n,p,rho,and a of different models .
 
