@@ -3,7 +3,6 @@
 rm(list = ls())
 library(MASS)
 library(glmnet)
-library(randomForest)
 library(log4r)
 library(tidyr)
 library(dplyr)
@@ -13,6 +12,7 @@ library(foreach)
 library(doParallel)
 library(harmonicmeanp)
 library(PLStests)
+# library(randomForest)
 # library(GRPtests)
 # library(RPtests)
 
@@ -164,8 +164,8 @@ for (hi in 1:1) {
   number_e = 1:number_of_experiment_type
   
   result_all <- foreach(an = number_e,.combine=rbind,
-                        .packages=c("MASS","glmnet","randomForest","log4r",
-                                    "GRPtests","dplyr","pracma","tidyr","psych",
+                        .packages=c("MASS","glmnet","log4r",
+                                    "dplyr","pracma","tidyr","psych",
                                     "harmonicmeanp","PLStests")) %dopar% {
     i = an
     start.time <- Sys.time()
