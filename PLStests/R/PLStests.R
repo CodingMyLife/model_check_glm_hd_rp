@@ -505,10 +505,6 @@ PLStest_LM <- function(y, x, b0=2, np=10) {
 #' data_test_x = scale(data_test_x)
 #' PLStests(data_test_y,data_test_x,family="binomial")
 #'
-#' ## add power2
-#' x_x_2 = cbind(data_test_x,data_test_x^2)
-#' x_x_2 = scale(x_x_2)
-#' PLStests(data_test_y,x_x_2,family="binomial")
 #'
 PLStests <- function(y,x,family,b0=2,np=10){
 
@@ -516,7 +512,7 @@ PLStests <- function(y,x,family,b0=2,np=10){
     message("Input is a data.frame. Converting to matrix...")
     x = as.matrix(x,ncol=1)
   } else if (is.matrix(x)) {
-    message("Input x is already a matrix.")
+    # message("Input x is already a matrix.")
   } else {
     stop("Input must be a data.frame or a matrix.")
   }
@@ -525,7 +521,7 @@ PLStests <- function(y,x,family,b0=2,np=10){
     message("Input is a data.frame. Converting to matrix...")
     y = as.matrix(y,ncol=1)
   } else if (is.matrix(x)) {
-    message("Input y is already a matrix.")
+    # message("Input y is already a matrix.")
   } else {
     stop("Input must be a data.frame or a matrix.")
   }

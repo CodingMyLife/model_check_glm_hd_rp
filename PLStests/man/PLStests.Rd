@@ -53,9 +53,5 @@ data_test_y = as.matrix(y)
 data_test_x = scale(data_test_x)
 PLStests(data_test_y,data_test_x,family="binomial")
 
-## add power2
-x_x_2 = cbind(data_test_x,data_test_x^2)
-x_x_2 = scale(x_x_2)
-PLStests(data_test_y,x_x_2,family="binomial")
 
 }
