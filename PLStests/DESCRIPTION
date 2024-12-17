@@ -1,14 +1,24 @@
 Package: PLStests
 Type: Package
-Title: Model checking for high dimensional generalized linear models based on random projections
+Title: Model Checking for High Dimensional Generalized Linear Models Based on Random Projections
 Version: 0.1.0
 Author: Wen Chen [aut,cre],Jie Liu [aut,cre],Heng Peng [aut],FaLong Tan [aut,cre],Lixing Zhu [aut]
 Maintainer: Wen Chen <tlqdcw@gmail.com>
-Description: Methodology for testing goodness of fit  based on random projections for generalized linear
- models, when the dimension of covariates may substantially exceed the sample size. Details on the statistic can be
-    found in the paper by xxx <arXiv>
-License: GPL
+Description: Description: This package provides methods for testing the goodness-of-fit 
+    of generalized linear models using random projections. It is specifically 
+    designed for high-dimensional scenarios where the number of predictor 
+    substantially exceeds the sample size. The statistical methodologies 
+    implemented in this package are described in recent research.
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
-Imports: glmnet, harmonicmeanp, MASS, psych
+Imports: glmnet, harmonicmeanp, MASS, psych,stats
+Authors@R: 
+   c(
+    person(given = "Wen", family = "Chen", role = c("aut", "cre"), email = "tlqdcw@gmail.com"),
+    person(given = "Jie", family = "Liu", role = c("aut")),
+    person(given = "Heng", family = "Peng", role = c("aut")),
+    person(given = "FaLong", family = "Tan", role = c("aut")),
+    person(given = "Lixing", family = "Zhu", role = c("aut"))
+    )
 RoxygenNote: 7.3.2

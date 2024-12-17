@@ -480,6 +480,10 @@ PLStest_LM <- function(y, x, b0=2, np=10) {
 #'  estimated projection. T_cauchy and T_hmp are p value of two combinational method proposed by
 #'  Liu and Xie (2020) and Wilson (2019) respectively. each method combines p values of \code{np} random
 #'  projections.
+#' @references
+#' Chen, W., Liu, J., Peng, H., Tan, F., & Zhu, L. (2024). Model checking for high dimensional generalized linear models based on random projections. arXiv [Stat.ME]. Retrieved from http://arxiv.org/abs/2412.10721
+#' @importFrom stats binomial coef glm pcauchy pnorm predict rnorm
+
 #' @export
 #'
 #' @examples

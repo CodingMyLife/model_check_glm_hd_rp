@@ -55,3 +55,6 @@ PLStests(data_test_y,data_test_x,family="binomial")
 
 
 }
+\references{
+Chen, W., Liu, J., Peng, H., Tan, F., & Zhu, L. (2024). Model checking for high dimensional generalized linear models based on random projections. arXiv [Stat.ME]. Retrieved from http://arxiv.org/abs/2412.10721
+}
