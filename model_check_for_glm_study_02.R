@@ -165,8 +165,8 @@ for (hi in 1:1) {
   number_e = 1:number_of_experiment_type
   
   result_all <- foreach(an = number_e,.combine=rbind,
-                        .packages=c("MASS","glmnet","randomForest","log4r",
-                                    "GRPtests","dplyr","pracma","tidyr","psych",
+                        .packages=c("MASS","glmnet","log4r"
+                                    ,"dplyr","pracma","tidyr","psych",
                                     "PLStests","harmonicmeanp")) %dopar% {
     i = an
     start.time <- Sys.time()
