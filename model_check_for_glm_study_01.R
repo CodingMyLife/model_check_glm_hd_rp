@@ -1,5 +1,5 @@
 ## Model checking for high dimensional generalized linear models based on random projections
-# nohup Rscript ./main/model_check_for_glm_study_01.R > ./tmp/model_check_for_glm_study_01.nohup 2>&1 &
+# nohup Rscript model_check_for_glm_study_01.R > ./tmp/model_check_for_glm_study_01.nohup 2>&1 &
 rm(list = ls())
 library(MASS)
 library(glmnet)
@@ -50,13 +50,13 @@ gen.data <- function(n, p, a,rho,func){
   return(list(X = X, y = y))
 }
 
-hh = c("H11","H11","H13","H14")
+hh = c("H11","H12","H13","H14")
 
 ##
 ## in our paper, there are four model to generate data, the looping variable hi can be set to 1:4.
 ## 
 
-for (hi in 1:1) {
+for (hi in 2:4) {
   
   pre_file_name = paste("model_check_for_glm_study_01",hh[hi],"_",
                         format(Sys.time(), "%Y_%m_%d_%H_%M_%S"),sep="_")
@@ -146,9 +146,9 @@ for (hi in 1:1) {
   ####  so p and rhos are all values defined before.
   ####  you can set n=800 or n=2000 to get other simulation result.
   exp_para = exp_para %>% filter(
-    func==hh[hi],
-    n==200
-    ,a==0
+    func==hh[hi]
+    ,n==200
+    # ,a==0
     # ,rhos==0
     # ,p==400
   ) %>% arrange(rhos,desc(p),desc(n))

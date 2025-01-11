@@ -1,5 +1,5 @@
 ## Model checking for high dimensional generalized linear models based on random projections
-# nohup Rscript ./main/model_check_for_glm_study_02.R > ./tmp/model_check_for_glm_study_02.nohup 2>&1 &
+# nohup Rscript model_check_for_glm_study_02.R > ./tmp/model_check_for_glm_study_02.nohup 2>&1 &
 rm(list = ls())
 library(MASS)
 library(glmnet)
@@ -59,7 +59,7 @@ gen.data <- function(n, p, a,rho,func){
 }
 
 hh = c("H21","H22","H23","H24")
-for (hi in 1:1) {
+for (hi in 1:4) {
   
   pre_file_name = paste("model_check_for_glm_study_02",hh[hi],"_",
                         format(Sys.time(), "%Y_%m_%d_%H_%M_%S"),sep="_")
@@ -81,7 +81,8 @@ for (hi in 1:1) {
   
   #### paramters for data generating n=200 
   n=c(200)    ## number of samples in one test.
-  p <-  c(10,100,200,400)
+  # p <-  c(10,100,200,400)
+  p <- c(50)
   rhos<-c(0,0.5)       # correlation of x
   func <- c("H21")     
   a_1 <- seq(0,0.4,length.out=length.a)
@@ -148,7 +149,7 @@ for (hi in 1:1) {
   exp_para = exp_para %>% filter(
     func==hh[hi],
     n==200
-    ,a==0
+    # ,a==0
     # ,rhos==0
     # ,p==800
   ) %>% arrange(rhos,desc(p),desc(n))
