@@ -14,7 +14,7 @@ install.packages(devtools)
 library(devtools)
 install_github("CodingMyLife/model_check_glm_hd_rp/PLStests")
 ```
-or download the project, using 
+or download the project on your directory , and then using 
 ```
 devtools::install_local("your_dir/model_check_glm_hd_rp/PLStests")
 ```
