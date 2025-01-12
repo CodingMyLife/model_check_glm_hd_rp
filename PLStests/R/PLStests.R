@@ -3,32 +3,33 @@
 #' @import MASS
 #' @import psych
 #'
+
 PLStest_GLM <- function(y, x, b0=2, np=10) {
-  
+
   n = nrow(x)
   p = ncol(x)
   b0_tmp = b0
   num_h = length(b0_tmp)
-  
+
   LST_pval_cauchy <- rep(NA,num_h)
   LST_pval_single <- rep(NA,num_h)
   LST_pval_hmp <- rep(NA,num_h)
   LST_pval_betan <- rep(NA,num_h)
-  
+
   #lasso
   mod_cv0 <- glmnet::cv.glmnet(x, y, family = "binomial", maxit=100000,intercept = F)
   lamuda <- c("lambda.min", "lambda.1se")[2]
   beta_n <- coef(mod_cv0, s = lamuda)[-1]
   beta_none0 <- seq(1:ncol(x))[as.numeric(beta_n) != 0]
-  
+
   for (id_h in 1:num_h) {
     b0 = b0_tmp[id_h]
     tryCatch({
-      
+
       len <- length(beta_none0)
-      #bandwidth  
+      #bandwidth
       h <- b0*(n^(-1/(4+len)))
-      #projection vector, redefine  sigma to avoid case2 
+      #projection vector, redefine  sigma to avoid case2
       sigma1 <- diag(1, p)
       mu <- rep(0, p)
       beta_pro <- mvrnorm(n=np,mu=mu,Sigma=sigma1)
@@ -45,7 +46,7 @@ PLStest_GLM <- function(y, x, b0=2, np=10) {
         pred = predict(fit.model, newx = X_S,type="response")
         pred = matrix(unname(pred),ncol = 1)
         beta_hat = unname(fit.model$coefficients)
-        
+
         U <- y-pred
         #new x
         X_SC <- x[,-beta_none0]
@@ -55,7 +56,7 @@ PLStest_GLM <- function(y, x, b0=2, np=10) {
         beta_hat <- beta_hat/sqrt(sum(beta_hat^2))
         beta_pro <- rbind(beta_pro,beta_hat)
       }
-      #residual matrix ，ui*uj  
+      #residual matrix ，ui*uj
       errormat <- U%*%t(U)
       #the number of projections
       pro_num <- nrow(beta_pro)
@@ -88,7 +89,7 @@ PLStest_GLM <- function(y, x, b0=2, np=10) {
       }else{
         pval_hmp <- pharmonicmeanp(1/mean(1/pval_matrix),pro_num)
       }
-      
+
       #power
       result2 <- c(pval_cauchy, pval_single,pval_hmp,pval_betan)
       LST_pval_cauchy[id_h] = result2[1]
@@ -101,7 +102,7 @@ PLStest_GLM <- function(y, x, b0=2, np=10) {
       print(e)
     })
   }
-  
+
   #result
   return(
     data.frame(
@@ -133,11 +134,11 @@ PLStest_LM <- function(y, x, b0=2, np=10) {
   for (id_h in 1:num_h) {
     b0 = b0_tmp[id_h]
     tryCatch({
-      
+
       len <- length(beta_none0)
-      #bandwidth  
+      #bandwidth
       h <- b0*(n^(-1/(4+len)))
-      #projection vector, redefine  sigma to avoid case2 
+      #projection vector, redefine  sigma to avoid case2
       sigma1 <- diag(1, p)
       mu <- rep(0, p)
       beta_pro <- mvrnorm(n=np,mu=mu,Sigma=sigma1)
@@ -150,7 +151,7 @@ PLStest_LM <- function(y, x, b0=2, np=10) {
         beta_pro <- beta_pro
       }else{
         X_S <- x[,beta_none0]
-        fit.model = glm(y~X_S-1,family = "gaussian")
+        fit.model = glm(y~X_S-1,family = gaussian(link = "identity"))
         pred = predict(fit.model, newx = X_S,type="response")
         pred = matrix(unname(pred),ncol = 1)
         beta_hat = unname(fit.model$coefficients)
@@ -163,7 +164,7 @@ PLStest_LM <- function(y, x, b0=2, np=10) {
         beta_hat <- beta_hat/sqrt(sum(beta_hat^2))
         beta_pro <- rbind(beta_pro,beta_hat)
       }
-      #residual matrix ，ui*uj  
+      #residual matrix ，ui*uj
       errormat <- U%*%t(U)
       #the number of projections
       pro_num <- nrow(beta_pro)
@@ -196,7 +197,7 @@ PLStest_LM <- function(y, x, b0=2, np=10) {
       }else{
         pval_hmp <- pharmonicmeanp(1/mean(1/pval_matrix),pro_num)
       }
-      
+
       #power
       result2 <- c(pval_cauchy, pval_single, pval_hmp, pval_betan)
       LST_pval_cauchy[id_h] = result2[1]
@@ -242,7 +243,7 @@ PLStest_LM <- function(y, x, b0=2, np=10) {
 #'  projections.
 #' @references
 #' Chen, W., Liu, J., Peng, H., Tan, F., & Zhu, L. (2024). Model checking for high dimensional generalized linear models based on random projections. arXiv [Stat.ME]. Retrieved from http://arxiv.org/abs/2412.10721
-#' @importFrom stats binomial coef glm pcauchy pnorm predict rnorm
+#' @importFrom stats binomial coef glm pcauchy pnorm predict rnorm gaussian
 
 #' @export
 #'

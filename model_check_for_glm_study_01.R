@@ -12,6 +12,7 @@ library(foreach)
 library(doParallel)
 library(harmonicmeanp)
 library(PLStests)
+# source("./PLStests/R/PLStests.R")
 # library(randomForest)
 # library(GRPtests)
 # library(RPtests)
@@ -56,7 +57,7 @@ hh = c("H11","H12","H13","H14")
 ## in our paper, there are four model to generate data, the looping variable hi can be set to 1:4.
 ## 
 
-for (hi in 2:4) {
+for (hi in 1:1) {
   
   pre_file_name = paste("model_check_for_glm_study_01",hh[hi],"_",
                         format(Sys.time(), "%Y_%m_%d_%H_%M_%S"),sep="_")
@@ -165,8 +166,8 @@ for (hi in 2:4) {
   
   result_all <- foreach(an = number_e,.combine=rbind,
                         .packages=c("MASS","glmnet","log4r",
-                                    "dplyr","pracma","tidyr","psych",
-                                    "harmonicmeanp","PLStests")) %dopar% {
+                                    "dplyr","pracma","tidyr","psych","PLStests",
+                                    "harmonicmeanp")) %dopar% {
     i = an
     start.time <- Sys.time()
     params = exp_para[i,]

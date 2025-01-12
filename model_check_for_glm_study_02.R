@@ -12,7 +12,7 @@ library(foreach)
 library(doParallel)
 library(harmonicmeanp)
 library(PLStests)
-
+# source("./PLStests/R/PLStests.R")
 # library(randomForest)
 # library(GRPtests)
 # library(RPtests)
@@ -81,8 +81,7 @@ for (hi in 1:4) {
   
   #### paramters for data generating n=200 
   n=c(200)    ## number of samples in one test.
-  # p <-  c(10,100,200,400)
-  p <- c(50)
+  p <-  c(10,100,200,400)
   rhos<-c(0,0.5)       # correlation of x
   func <- c("H21")     
   a_1 <- seq(0,0.4,length.out=length.a)
@@ -151,7 +150,7 @@ for (hi in 1:4) {
     n==200
     # ,a==0
     # ,rhos==0
-    # ,p==800
+    # ,p==400
   ) %>% arrange(rhos,desc(p),desc(n))
   
   start.time <- Sys.time()
@@ -166,9 +165,8 @@ for (hi in 1:4) {
   number_e = 1:number_of_experiment_type
   
   result_all <- foreach(an = number_e,.combine=rbind,
-                        .packages=c("MASS","glmnet","log4r"
-                                    ,"dplyr","pracma","tidyr","psych",
-                                    "PLStests","harmonicmeanp")) %dopar% {
+                        .packages=c("MASS","glmnet","log4r","PLStests"
+                                    ,"dplyr","pracma","tidyr","psych","harmonicmeanp")) %dopar% {
     i = an
     start.time <- Sys.time()
     params = exp_para[i,]
