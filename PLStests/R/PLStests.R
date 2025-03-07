@@ -128,7 +128,7 @@ PLStest_LM <- function(y, x, b0=2, np=10) {
 
   #lasso
   mod_cv0 <- glmnet::cv.glmnet(x, y, family = "gaussian",intercept = F)
-  lamuda <- c("lambda.min", "lambda.1se")[1]
+  lamuda <- c("lambda.min", "lambda.1se")[2]
   beta_n <- coef(mod_cv0, s = lamuda)[-1]
   beta_none0 <- seq(1:ncol(x))[as.numeric(beta_n) != 0]
   for (id_h in 1:num_h) {
