@@ -22,7 +22,7 @@ a list with five parameters returned. \code{h} stand for \code{b_0}.
 T_alpha: the p value of our statistics by random projection. T_beta: the p value of our statistic by
  estimated projection. T_cauchy and T_hmp are p value of two combinational method proposed by
  Liu and Xie (2020) and Wilson (2019) respectively. each method combines p values of \code{np} random
- projections.
+ projections. when the estimated projection is zero, the value set be NA.
 }
 \description{
 The function can test goodness-of-fit of a low- or high-dimensional
